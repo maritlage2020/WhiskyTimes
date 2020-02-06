@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3>パスワード再設定</h3>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center;">
+                    <b>パスワード再設定フォーム</b>
+                </div>
+                <table class="table table-bordered table-content">
+                    <tr>
+                        <div class="field">
+                            <th class="info">
+                                <%= f.label :"メールアドレス" %><br />
+                            </th>
+                            <td>
+                                <%= f.email_field :email, autofocus: true %>
+                            </td>
+                        </div>
+                        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                        <div>Currently waiting confirmation for:
+                            <%= resource.unconfirmed_email %>
+                        </div>
+                        <% end %>
+                    </tr>
+                    <tr>
+                        <div class="field">
+                            <th class="info">
+                                <%= f.label :"新しいパスワード"%>
+                                   (<%= @minimum_password_length %>文字以上)<br />
+                            </th>
+                            <td>
+                                <%= f.password_field :password %>
+                                <% if @minimum_password_length %>
+                                <br />
+                                <% end %>
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="field">
+                            <th class="info">
+                                <%= f.label :"新しいパスワード(確認)" %><br />
+                            </th>
+                            <td>
+                                <%= f.password_field :password_confirmation %>
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="field">
+                            <th class="info">
+                                <%= f.label :"現在のパスワード" %><br />
+                            </th>
+                            <td>
+                                <%= f.password_field :current_password %>
+                            </td>
+                        </div>
+                    </tr>
+                </table>
+            </div>
+            <div class="actions" style="text-align: center">
+                <%= f.submit "更新", class: "btn-sm btn-primary" %>
+            </div>
+            <% end %>
+            <!--
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <%= link_to "Back", :back %>
+      -->
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

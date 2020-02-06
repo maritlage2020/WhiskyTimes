@@ -1,15 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WhiskyTimes</title>
+
+<head>
+    <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <script src="https://kit.fontawesome.com/46860f55f1.js" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ffeaff;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarEexample">
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav" style="color: black;">
+                        <!-- Customerがログインしている時 -->
+                        <% if current_user %>
+                        <li class="">
+                            <%= link_to user_path(current_user) do %>
+                            <i class="fas fa-user">
+                                <%= " #{current_user.name}さん" %></i>
+                            <% end %>
+                        </li>
+                        <!-- してないとき -->
+                        <% else %>
+                        <li class="">
+                            <%= link_to new_user_session_path do %>
+                            <i class="fas fa-sign-in-alt"> Login</i>
+                            <% end %>
+                        </li>
+                        <li class="">
+                            <%= link_to new_user_registration_path do %>
+                            <i class="fas fa-user-plus"> Signup</i>
+                            <% end %>
+                        <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="fluid-box2 fourth-visual">
+        <div class="bg-mask-w">
+            <div class="wrapper" style="min-height: 100vh;position: relative;padding-bottom: 200px;box-sizing: border-box;" ;>
+                <div class="container">
+                    <div class="row">
+                        <!-- flash表示ここから -->
+                        <div class="row　flash text-center flash-deco">
+                            <% if flash[:notice] %>
+                                <span class="label label-primary">
+                                    <i class="fas fa-info-circle"></i>
+                                    <%= flash[:notice] %>
+                                </span>
+                            <% end %>
+                            <% if flash[:success] %>
+                                <span class="label label-success">
+                                    <i class="fas fa-check-circle"></i>
+                                    <%= flash[:success] %>
+                                </span>
+                            <% end %>
+                            <% if flash[:danger] %>
+                                <span class="label label-danger">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= flash[:danger] %>
+                                </span>
+                            <% end %>
+                        </div>
+                        <!-- flash表示ここまで -->
+                        <%= yield %>
+                        </div>
+                    </div>
+                </div>
+                <footer class="page-footer font-lage pt-4" style="position: absolute;bottom: 0;width: 100%;background-size: cover;height: 200px; background-position: 0px 400px ;background-image: url(/assets/background-image1.jpg)">
+                    <div class="container">
+                        <!-- Social buttons -->
+                        <ul class="list-unstyled list-inline text-center" style="margin-top: 10px;">
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-fb mx-1">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-tw mx-1">
+                                    <i class="fab fa-twitter"> </i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn-floating btn-gplus mx-1">
+                                    <i class="fab fa-instagram"> </i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="row" style="text-align: center;">
+                            <p>このサイトは皆様の善意によって作られています<br>
+                            </p>
+                        </div>
+                        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                            <a href=""> WhiskyTImes</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
