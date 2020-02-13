@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  resources :reviews
-  resources :users
-  get 'reviews/top'
-  root 'reviews#top'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'reviews#index'
+  get '/home/about', to: 'reviews#about'
+  get '/search', to: 'search#search'
+  resources :reviews do
+  	resource :favorites, only: [:create, :destroy]
+  end
+  resources :clips, only: [:index]
+  resources :relationships, only: [:index, :create, :destroy]
+  resources :users, only:[:index, :show, :update, :edit] do
+  	member do
+  	get :followings, :followers
+  	end
+  end
 end

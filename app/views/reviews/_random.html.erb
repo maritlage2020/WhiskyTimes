@@ -1,0 +1,11 @@
+<h5 style="background-color:#4db6ac;">ランダム表示</h5>
+ <ul class="list-unstyled">
+  <% randreviews.each do |review| %>
+  <li class="media mb-3">
+    <%= attachment_image_tag review, :image_id, :fill, 50, 50, fallback: "no_image.png", size:'50x50' , class: 'align-self-center mr-3' %>
+    <div class="media-body">
+      <h5><%= link_to review.title, review %></h5>
+    </div>
+  </li>
+    <% end %>
+ </ul>

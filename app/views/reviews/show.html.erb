@@ -1,2 +1,19 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'トップ', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to @user.name, @user, class: "user_#{@user.id}" %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @review.title %></li>
+  </ol>
+</nav>
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+    <div class="row">
+      <div class="col-md-8">
+        <%= render 'review',{review: @review} %>
+    </div>
+    <div class="col-md-4">
+      <%= render 'users/info',{user: @user} %>
+    </div>
+  </div>
+</div>

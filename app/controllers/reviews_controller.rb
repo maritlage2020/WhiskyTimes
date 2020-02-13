@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
     @reviews = Review.order("created_at").page(params[:page])
     if Rails.env.production?
     # 本番コード
-    @randmusics = Review.order("RAND()").limit(5)
+    @randreviews = Review.order("RAND()").limit(5)
     else 
     # 開発環境コード
-    @randmusics = Review.order("RANDOM()").limit(5)
+    @randreviews = Review.order("RANDOM()").limit(5)
     end
   end
 
@@ -42,38 +42,29 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
 
-    respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
+              redirect_to @review, notice: 'Review was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
+        render :new
+           end
   end
 
   # PATCH/PUT /musics/1
   # PATCH/PUT /musics/1.json
   def update
-    respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Revieww was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
+        redirect_to @review, notice: 'Revieww was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
+
 
   # DELETE /musics/1
   # DELETE /musics/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to reviews_url, notice: 'Review was successfully destroyed.'
     end
   end
 

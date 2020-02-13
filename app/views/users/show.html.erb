@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="background-color:#f5f5f5;;">
+      <li class="breadcrumb-item"><%= link_to 'トップ', root_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @user.name %></li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-8">
+      <%= render 'reviews/reviewlist', reviews: @reviews%>
+    </div>
+    <div class="col-md-4">
+      <%= render 'users/info',{user: @user} %>
+    </div>
+  </div>
+</div>

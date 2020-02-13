@@ -1,0 +1,19 @@
+<div class="card mx-2">
+  <%= attachment_image_tag user, :profile_image_id, :fill, 150, 150, format:'jpeg', class: "w-50 mx-auto d-block rounded-circle mt-3" , fallback: "no_image.jpg" %>
+  <div class="card-body">
+    <h5 class="card-title"><%= user.name %></h5>
+    <p class="card-text"><%= user.introduction %></p>
+    <%= link_to "#{user.followings.count} フォロー", followings_user_path(user) %>
+    <%= link_to "#{user.followers.count} フォロワー", followers_user_path(user) %><br>
+    <%= render 'relationships/follow_button', user: user %>
+
+    <% if user == current_user %>
+      <button type="button" class="btn btn-outline-secondary btn-block my-2">
+        <%= link_to 'ユーザー編集',edit_user_path(current_user.id) %>
+      </button>
+      <button type="button" class="btn btn-outline-secondary btn-block my-2">
+        <%= link_to '登録情報編集', edit_user_registration_path %>
+      </button>
+    <% end %>
+  </div>
+</div>
