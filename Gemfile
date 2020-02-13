@@ -48,12 +48,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+    gem 'pry-byebug'
+  gem 'annotate'
 end
 
-gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -65,9 +64,20 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'devise'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-
+gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'audiojs-rails'
+gem 'devise'
+gem "font-awesome-rails"
+gem 'kaminari'
+gem 'rails_admin'
+gem 'cancancan'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

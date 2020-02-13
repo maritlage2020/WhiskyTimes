@@ -3,9 +3,9 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.integer :user_id
       t.integer :genre_id
-      t.string :title
+      t.string :title, null: false
       t.string :image_id
-      t.text :body
+      t.text :body, null: false
       t.datetime :created_at
       t.datetime :update_at
 
