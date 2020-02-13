@@ -64,8 +64,7 @@ class ReviewsController < ApplicationController
   # DELETE /musics/1.json
   def destroy
     @review.destroy
-      redirect_to reviews_url, notice: 'Review was successfully destroyed.'
-    end
+    redirect_to reviews_url, notice: 'Review was successfully destroyed.'
   end
 
   private
