@@ -70,13 +70,9 @@ gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'carrierwave'
-gem 'audiojs-rails'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'kaminari'
-gem 'rails_admin'
-gem 'cancancan'
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

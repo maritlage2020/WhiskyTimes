@@ -1,0 +1,36 @@
+<p>
+  <strong>ウイスキーの画像:</strong>
+  <%= attachment_image_tag review, :image, :fill, 100, 100, format:'jpeg', class: "pull-left ", fallback: "no_image.png", size:'100x100'  %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= review.title %>
+</p>
+
+<p>
+  <strong>body:</strong>
+  <%= review.body %>
+</p>
+
+<p>
+  <strong>投稿日時:</strong>
+  <%= review.created_at.to_s(:datetime_jp) %>
+</p>
+
+
+
+
+<!-- いいね機能 -->
+<% if user_signed_in? %>
+<div class="favorite-zone my-2">
+  <%= render 'reviews/fav', review: review%>
+</div>
+<% end %>
+
+
+
+<% if review.user == current_user %>
+<%= link_to '編集', edit_review_path(review), class: 'btn btn-info text-dark mr-2 my-1' %>
+<%= link_to '削除', review, method: :delete, data: { confirm: '削除してもよろしいですか?' }, class: 'btn btn-danger text-light my-1' %>
+<% end %>

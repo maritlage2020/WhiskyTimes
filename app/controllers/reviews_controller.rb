@@ -15,8 +15,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # GET /musics/1
-  # GET /musics/1.json
+
   def show
     @user = @review.user
   end
@@ -24,20 +23,19 @@ class ReviewsController < ApplicationController
   def about
   end
 
-  # GET /musics/new
+
   def new
     @review = Review.new
   end
 
-  # GET /musics/1/edit
+
   def edit
     if current_user.id != @review.user_id
        redirect_to reviews_path
     end
   end
 
-  # POST /musics
-  # POST /musics.json
+
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
@@ -46,11 +44,10 @@ class ReviewsController < ApplicationController
               redirect_to @review, notice: 'Review was successfully created.'
       else
         render :new
-           end
+      end
   end
 
-  # PATCH/PUT /musics/1
-  # PATCH/PUT /musics/1.json
+
   def update
       if @review.update(review_params)
         redirect_to @review, notice: 'Revieww was successfully updated.'
@@ -60,8 +57,6 @@ class ReviewsController < ApplicationController
   end
 
 
-  # DELETE /musics/1
-  # DELETE /musics/1.json
   def destroy
     @review.destroy
     redirect_to reviews_url, notice: 'Review was successfully destroyed.'
@@ -75,6 +70,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :body, :image_id)
+      params.require(:review).permit(:title, :body, :image)
     end
 end

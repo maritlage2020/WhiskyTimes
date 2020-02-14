@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Rails.env == 'development'
+  (1..50).each do |i|
+    	User.create!(
+		name:"#{i}#{i}",
+		email: "#{i}@#{i}",
+		password: '111111',
+		introduction: "週に#{i}冊は本読んでます！よろしくお願いします！"
+	 )
+  end
+end
+
+User.create!(
+	[	
+		{
+		 email: 'a@a',
+		 password: '123456',
+		 name: 'テストマン',
+		 introduction: 'ooooooo'
+
+		}
+
+	]
+	)
