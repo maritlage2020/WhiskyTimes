@@ -1,5 +1,5 @@
 <div class="card mx-2">
-  <%= attachment_image_tag user, :profile_image_id, :fill, 150, 150, format:'jpeg', class: "w-50 mx-auto d-block rounded-circle mt-3" , fallback: "no_image.jpg" %>
+  <%= attachment_image_tag user, :profile_image, :fill, 150, 150, format:'jpeg', class: "w-50 mx-auto d-block rounded-circle mt-3" , fallback: "no_image.png" %>
   <div class="card-body">
     <h5 class="card-title"><%= user.name %></h5>
     <p class="card-text"><%= user.introduction %></p>

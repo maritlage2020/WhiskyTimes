@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'review_comments/create'
-  get 'review_comments/destroy'
   devise_for :users
   root 'reviews#index'
   get '/home/about', to: 'reviews#about'
   get '/search', to: 'search#search'
   resources :reviews do
-    resource :music_comments, only: [:create, :destroy]
+    resource :review_comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
   resources :clips, only: [:index]

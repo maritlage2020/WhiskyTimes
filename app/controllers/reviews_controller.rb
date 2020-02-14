@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
 
   def show
     @user = @review.user
+    @review_comment = ReviewComment.new
   end
 
   def about
@@ -70,6 +71,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :body, :image)
+      params.require(:review).permit(:title, :body, :review_image)
     end
 end

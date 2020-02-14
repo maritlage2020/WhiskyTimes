@@ -1,0 +1,2 @@
+$("textarea").val("");
+$(".comment_<%= @review.id %>").html("<%= j(render 'reviews/comment', review_comments: @review.review_comments ) %>");

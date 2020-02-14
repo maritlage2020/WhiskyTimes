@@ -9,7 +9,7 @@
     </td>
     <td><%= review_comment.comment %></td>
     <% if review_comment.user == current_user %>
-       <td><%= link_to '削除する', review_comments_path(review_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+       <td><%= link_to 'destroy', review_comments_path(review_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
     <% end %>
   </tr>
   <% end %>
