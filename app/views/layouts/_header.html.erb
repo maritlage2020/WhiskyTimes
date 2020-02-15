@@ -27,9 +27,6 @@ nav class="navbar" style="background-color:#0288D1;">
         <span class="navbar-text"><%= link_to 'マイページ', user_path(current_user.id), :style=>"color:#333333;" %></span>
       </li>
       <li class="nav-item mr-3">
-        <span class="navbar-text"><%= link_to "お気に入り", clips_path(current_user.id), :style=>"color:#333333;" %></span>
-      </li>
-      <li class="nav-item mr-3">
         <span class="navbar-text"><%= link_to '新規投稿', new_review_path, :style=>"color:#333333;" %></span>
       </li>
       <li class="nav-item mr-3">

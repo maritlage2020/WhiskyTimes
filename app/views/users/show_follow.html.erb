@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'トップ', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'ユーザー', users_path %></li>
+    <li class="breadcrumb-item"><%= link_to @user.name, @user, class: "user_#{@user.id}" %></li>
+    <li class="breadcrumb-item active" aria-current="page">フォロー</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <h2>Followings</h2>
+  <p><%= @user.name %>がフォローしているユーザー</p>
+  <table class="table table-striped">
+   <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @user.followings.each do |user| %>
+  <tbody>
+    <tr>
+       <td>
+         <div><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format:'jpeg', class: "pull-left profile-img", fallback: "no_image.png" %></div>
+       </td>
+       <td>
+        <%= user.name %>
+       </td>
+       <td>
+        <%= link_to "show",user_path(user.id), class: "user_#{user.id}" %>
+       </td>
+       <td>
+        <%= render 'relationships/follow_button', user: user %>
+      </td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+<%= paginate @users %>
+</div>

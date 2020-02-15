@@ -22,9 +22,17 @@ User.create!(
 		 email: 'a@a',
 		 password: '123456',
 		 name: 'テストマン',
-		 introduction: 'ooooooo'
+		 introduction: 'ウルフバーンが好きです'
+
+		},
+		{
+		 email: 'b@b',
+		 password: '123123',
+		 name: 'テストマン2',
+		 introduction: 'なんでも飲みます'
 
 		}
 
 	]
 	)
+
